@@ -1,4 +1,4 @@
-import { Section, Cell, Image, List, Button } from '@telegram-apps/telegram-ui';
+import { Section, Cell, Image, List, Button, Modal, Placeholder } from '@telegram-apps/telegram-ui';
 import { popup } from '@telegram-apps/sdk';
 
 import { Link } from '@/components/Link/Link.jsx';
@@ -11,22 +11,6 @@ import './IndexPage.css';
  * @returns {JSX.Element}
  */
 export function IndexPage() {
-
-  async function testClick() {
-    console.log("KILL NIGGERSZ");
-
-    if (popup.open.isAvailable()) {
-      // popup.isOpened() -> false
-      const promise = popup.open({
-        title: 'Hello!',
-        message: 'KILL NIGGERS',
-        buttons: [{ id: 'my-id', type: 'default', text: 'Default text' }],
-      });
-      // popup.isOpened() -> true
-      const buttonId = await promise;
-      // popup.isOpened() -> false
-    }
-  };
 
   return (
     <List>
@@ -46,7 +30,7 @@ export function IndexPage() {
 
       <Section>
         <Cell>
-        <Button mode="filled" size="s" onClick={testClick}>Click me</Button>
+        <Button mode="filled" size="s">Click me</Button>
         </Cell>
       </Section>
 
@@ -64,6 +48,25 @@ export function IndexPage() {
           <Cell subtitle="Telegram application palette information">Theme Parameters</Cell>
         </Link>
       </Section>
+
+      <Modal
+      trigger={<Button size="m">Open modal</Button>}
+      >
+      <Placeholder
+        description="ПидОр"
+        header="Ты"
+      >
+        <img
+          alt="Telegram sticker"
+          src="https://xelene.me/telegram.gif"
+          style={{
+            display: 'block',
+            height: '144px',
+            width: '144px'
+          }}
+        />
+      </Placeholder>
+      </Modal>
     </List>
   );
 }
