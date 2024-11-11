@@ -61,6 +61,30 @@ const initializeTelegramSDK = async () => {
 // Инициализация SDK
 initializeTelegramSDK();
 
+// Инициализация главной кнопки
+const [mainButton] = initMainButton();
+mainButton.setParams({
+  backgroundColor: '#aa1388',
+  text: 'Поделиться очками',
+  isVisible: true,
+  isEnabled: true,
+});
+mainButton.show();
+
+const utils = initUtils();
+
+// Установка обработчика нажатия на главную кнопку
+mainButton.on('click', () => {
+  try {
+    // Получение текущих очков из localStorage
+    const score = localStorage.getItem('memory-game-score') || 0;
+    utils.shareURL(`Посмотрите! У меня ${score} очков в игре!`);
+    console.log('Окно выбора чата открыто для отправки сообщения.');
+  } catch (error) {
+    console.error('Ошибка при открытии окна выбора чата:', error);
+  }
+});
+
 const container = document.getElementById('root');
 const root = createRoot(container);
 
