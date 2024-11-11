@@ -1,5 +1,5 @@
 import { Section, Cell, Image, List, Button } from '@telegram-apps/telegram-ui';
-import { popup } from '@telegram-apps/sdk'
+import { popup } from '@telegram-apps/sdk';
 
 import { Link } from '@/components/Link/Link.jsx';
 
