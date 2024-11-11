@@ -7,7 +7,7 @@ const initializeTelegramSDK = async () => {
   try {
     // Попытка инициализировать настоящее окружение Telegram
     console.log("Инициализация окружения Telegram");
-    const [miniApp] = initMiniApp();
+    const [miniApp] = miniApp();
     await miniApp.ready();
 
     miniApp.setHeaderColor('#fcb69f');
@@ -62,7 +62,7 @@ const initializeTelegramSDK = async () => {
 initializeTelegramSDK();
 
 // Инициализация главной кнопки
-const [mainButton] = initMainButton();
+const [mainButton] = mainButton();
 mainButton.setParams({
   backgroundColor: '#aa1388',
   text: 'Поделиться очками',
