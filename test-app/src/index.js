@@ -7,10 +7,10 @@ const initializeTelegramSDK = async () => {
   try {
     // Попытка инициализировать настоящее окружение Telegram
     console.log("Инициализация окружения Telegram");
-    const [miniApp] = miniApp();
-    await miniApp.ready();
+    const [miniApps] = miniApp();
+    await miniApps.ready();
 
-    miniApp.setHeaderColor('#fcb69f');
+    miniApps.setHeaderColor('#fcb69f');
   } catch (error) {
     // В случае ошибки инициализируем фейковое окружение
     console.error('Ошибка при инициализации Telegram:', error);
@@ -62,19 +62,19 @@ const initializeTelegramSDK = async () => {
 initializeTelegramSDK();
 
 // Инициализация главной кнопки
-const [mainButton] = mainButton();
-mainButton.setParams({
+const [mainBtn] = mainButton();
+mainBtn.setParams({
   backgroundColor: '#aa1388',
   text: 'Поделиться очками',
   isVisible: true,
   isEnabled: true,
 });
-mainButton.show();
+mainBtn.show();
 
 const utils = initUtils();
 
 // Установка обработчика нажатия на главную кнопку
-mainButton.on('click', () => {
+mainBtn.on('click', () => {
   try {
     // Получение текущих очков из localStorage
     const score = localStorage.getItem('memory-game-score') || 0;
