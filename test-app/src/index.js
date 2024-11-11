@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import { miniApp, mainButton, mockTelegramEnv, parseInitData, initUtils } from '@telegram-apps/sdk';
+import { miniApp, mainButton, mockTelegramEnv, parseInitData, shareURL } from '@telegram-apps/sdk';
 
 const initializeTelegramSDK = async () => {
   try {
@@ -71,14 +71,12 @@ mainBtn.setParams({
 });
 mainBtn.show();
 
-const utils = initUtils();
-
 // Установка обработчика нажатия на главную кнопку
 mainBtn.on('click', () => {
   try {
     // Получение текущих очков из localStorage
     const score = localStorage.getItem('memory-game-score') || 0;
-    utils.shareURL(`Посмотрите! У меня ${score} очков в игре!`);
+    shareURL(`Посмотрите! У меня ${score} очков в игре!`);
     console.log('Окно выбора чата открыто для отправки сообщения.');
   } catch (error) {
     console.error('Ошибка при открытии окна выбора чата:', error);
