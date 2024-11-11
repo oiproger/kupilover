@@ -29,9 +29,24 @@ export function IndexPage() {
       </Section>
 
       <Section>
-        <Cell>
-        <Button mode="filled" size="s">Click me</Button>
-        </Cell>
+        <Modal
+        trigger={<Button size="m">Open modal</Button>}
+        >
+        <Placeholder
+          description="ПидОр"
+          header="Ты"
+        >
+          <img
+            alt="Telegram sticker"
+            src="https://xelene.me/telegram.gif"
+            style={{
+              display: 'block',
+              height: '144px',
+              width: '144px'
+            }}
+          />
+        </Placeholder>
+        </Modal>
       </Section>
 
       <Section
@@ -48,25 +63,6 @@ export function IndexPage() {
           <Cell subtitle="Telegram application palette information">Theme Parameters</Cell>
         </Link>
       </Section>
-
-      <Modal
-      trigger={<Button size="m">Open modal</Button>}
-      >
-      <Placeholder
-        description="ПидОр"
-        header="Ты"
-      >
-        <img
-          alt="Telegram sticker"
-          src="https://xelene.me/telegram.gif"
-          style={{
-            display: 'block',
-            height: '144px',
-            width: '144px'
-          }}
-        />
-      </Placeholder>
-      </Modal>
     </List>
   );
 }
