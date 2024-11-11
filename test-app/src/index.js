@@ -1,16 +1,16 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import { miniApp, mainButton, mockTelegramEnv, parseInitData, shareURL } from '@telegram-apps/sdk';
+import { init, miniApp, mainButton, mockTelegramEnv, parseInitData, shareURL } from '@telegram-apps/sdk';
 
 const initializeTelegramSDK = async () => {
   try {
     // Попытка инициализировать настоящее окружение Telegram
-    console.log("Инициализация окружения Telegram");
-    const [miniApps] = miniApp();
-    await miniApps.ready();
+    console.log("Инициализация окружения Telegramm");
+    init();
+    miniApp.mount();
 
-    miniApps.setHeaderColor('#fcb69f');
+    miniApp.setHeaderColor('#fcb69f');
   } catch (error) {
     // В случае ошибки инициализируем фейковое окружение
     console.error('Ошибка при инициализации Telegram:', error);
