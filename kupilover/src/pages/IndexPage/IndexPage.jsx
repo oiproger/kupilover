@@ -1,4 +1,5 @@
-import { Section, Cell, Image, List } from '@telegram-apps/telegram-ui';
+import { Section, Cell, Image, List, Button } from '@telegram-apps/telegram-ui';
+import { popup } from '@telegram-apps/sdk'
 
 import { Link } from '@/components/Link/Link.jsx';
 
@@ -10,6 +11,23 @@ import './IndexPage.css';
  * @returns {JSX.Element}
  */
 export function IndexPage() {
+
+  async function testClick() {
+    console.log("KILL NIGGERSZ");
+
+    if (popup.open.isAvailable()) {
+      // popup.isOpened() -> false
+      const promise = popup.open({
+        title: 'Hello!',
+        message: 'KILL NIGGERS',
+        buttons: [{ id: 'my-id', type: 'default', text: 'Default text' }],
+      });
+      // popup.isOpened() -> true
+      const buttonId = await promise;
+      // popup.isOpened() -> false
+    }
+  };
+
   return (
     <List>
       <Section
@@ -38,6 +56,10 @@ export function IndexPage() {
         <Link to="/theme-params">
           <Cell subtitle="Telegram application palette information">Theme Parameters</Cell>
         </Link>
+      </Section>
+
+      <Section>
+        <Button mode="filled" size="s" onClick={testClick}>Click me</Button>
       </Section>
     </List>
   );

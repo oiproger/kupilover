@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "homepage": "https://telegram-mini-apps.github.io/reactjs-js-tsdk-template",
+  "homepage": "https://oiproger.github.io/kupilover",
   "scripts": {
     "deploy": "gh-pages -d dist",
     "dev": "vite",
@@ -14,6 +14,7 @@
     "predeploy": "npm run build"
   },
   "dependencies": {
+    "@telegram-apps/sdk": "^2.6.0",
     "@telegram-apps/telegram-ui": "^2.1.4",
     "@tonconnect/ui-react": "^2.0.5",
     "@twa-dev/sdk": "^7.0.0",
