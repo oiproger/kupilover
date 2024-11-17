@@ -91,7 +91,8 @@ export function InitDataPage() {
       <Placeholder
         header="Oops"
         description="Application was launched with missing init data"
-      >
+      > 
+      
         <img
           alt="Telegram sticker"
           src="https://xelene.me/telegram.gif"
