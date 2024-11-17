@@ -1,4 +1,4 @@
-import { Section, Cell, Image, List, Button, Modal, Placeholder, Select, Caption, Tabbar } from '@telegram-apps/telegram-ui';
+import { Section, Cell, Image, List, Button, Modal, Placeholder, Select, Caption, Tabbar, Card, Textarea } from '@telegram-apps/telegram-ui';
 import React, { useState } from 'react';
 import { popup } from '@telegram-apps/sdk';
 
@@ -9,6 +9,8 @@ import tonSvg from './ton.svg';
 import './IndexPage.css';
 import { SectionHeader } from '@telegram-apps/telegram-ui/dist/components/Blocks/Section/components/SectionHeader/SectionHeader';
 import { ModalHeader } from '@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader';
+import { CardChip } from '@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip';
+import { CardCell } from '@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell';
 
 /**
  * @returns {JSX.Element}
@@ -28,10 +30,18 @@ export function IndexPage() {
       text:"Аккаунт"
     },
   ];
+  const romanticCards = [
+  ];
+  const partsRomantic = {
+    main: "mainRomantic",
+    filter: "filterRomantic",
+  };
   const [currTab, setCurrTab] = useState(tabs[0].id);
   const [missName, setMissName] = useState("Test");
   const [missAbout, setMissAbout] = useState("Test lalalal");
   const [selTheme, setSelTheme] = useState("Домашний");
+  const [selPart, setSelPart] = useState(partsRomantic.main);
+  const [romCards, setRomCards] = useState(romanticCards);
   const genCriteries = [
     "Домашний",
     "Прогулочный",
@@ -39,6 +49,8 @@ export function IndexPage() {
     "Выездной",
     "Знакомство в компании",
   ];
+  let tmpName = "";
+  let tmpAbout = "";
 
   const genMissions = {
     [genCriteries[0]]: {
@@ -251,112 +263,77 @@ export function IndexPage() {
     const keys = Object.keys(hObj);
     return hObj[keys[ keys.length * Math.random() << 0]];
   };
+
   const generateMission = () => {
-    console.log("GEN");
+    console.log("CUMplete");
+    romanticCards.length = 0;
     const getSubTheme = genMissions[selTheme];
     console.log(getSubTheme);
-    console.log("BEGIN SET");
-    const randomItem = pickRandomMission(getSubTheme);
-    console.log(randomItem);
-    setMissName(randomItem.missName);
-    setMissAbout(randomItem.missAbout);
+    for (let i = 0; i < 3; i++) {
+      const randomItem = pickRandomMission(getSubTheme);
+      tmpName = randomItem.missName;
+      tmpAbout = randomItem.missAbout;
+      romanticCards.push({
+        hName: tmpName,
+        hAbout: tmpAbout,
+      });
+    }
+    setRomCards(romanticCards);
+    console.log(romanticCards);
     return;
   };
+
+  const switchToPage = () => {setSelPart(partsRomantic.filter)};
+
+  const MainPage = () => (
+    <Section>
+          <Placeholder>
+            <Button size="m" onClick={switchToPage}>Свидание по предпочтениям</Button>
+          </Placeholder>
+        </Section>
+  )
+  
+  const FilterPage = () => (
+    <Section header="Свидание по предпочтениям" id="filterRomantic">
+      <List>
+        <Placeholder>
+          <Select header="Тематика" placeholder="Выбирай)" value={selTheme} onChange={e => setSelTheme(e.target.value)}>
+            {genCriteries.map((criteriesName, criteriesVal) => (
+              <option key={criteriesVal}>{criteriesName}</option>
+            ))}
+          </Select>
+        </Placeholder>
+
+        <Placeholder>
+          <Button size="m" onClick={generateMission}>Мне повезёт!</Button>
+        </Placeholder>
+
+        <Section>
+            {romCards.map(({
+              hName,
+              hAbout,
+            }) => 
+              <Section>
+                <Textarea header={hName} disabled>{hAbout}</Textarea>
+              </Section>
+            )}
+        </Section>
+
+        <Placeholder>
+          <Button size="m">Будущая кнопка "Поделиться"</Button>
+        </Placeholder>
+
+      </List>
+    </Section>
+  )
 
   return ( <div style={{
     height: 200,
     width: 400,
   }}>
     <List>
-      <Section>
-        <Cell>
-          <Modal
-          header={<ModalHeader></ModalHeader>}
-          trigger={<Button size="m" aria-describedby={missName}>Свидание по предпочтениям</Button>}
-          >
-            <div
-              style={{
-                height: '100vh'
-              }}>
-                <List>
-                  <Cell>
-                    <Select header="Тематика" placeholder="Выбирай)" value={selTheme} onChange={e => setSelTheme(e.target.value)}>
-                      {genCriteries.map((criteriesName, criteriesVal) => (
-                        <option key={criteriesVal}>{criteriesName}</option>
-                      ))}
-                    </Select>
-                  </Cell>
-
-                  <Cell>
-                    <Button
-                      mode="filled"
-                      size="s"
-                      onClick={generateMission}
-                    >
-                      Мне повезёт!
-                    </Button>
-                  </Cell>
-                    
-                  <Cell>
-                      <Placeholder
-                        description={missAbout}
-                        header={missName}
-                      >
-                      </Placeholder>
-                  </Cell>
-                </List>
-            </div>
-          </Modal>
-        </Cell>
-
-        <Cell>
-          <Modal
-          trigger={<Button size="m" onClick={generateMission} aria-describedby={missName}>Случайное свидание</Button>}
-          >
-          <Placeholder id="showDescr"
-            description={missName}
-            header={missAbout}
-          >
-
-            <Caption>
-            \U00002764
-            </Caption>
-            <img
-              alt="Telegram sticker"
-              src="https://xelene.me/telegram.gif"
-              style={{
-                display: 'block',
-                height: '144px',
-                width: '144px'
-              }}
-            />
-          </Placeholder>
-          </Modal>
-        </Cell>
-
-        <Cell>
-          <Modal
-          header={<ModalHeader></ModalHeader>}
-          trigger={<Button size="m" onClick={generateMission} aria-describedby={missName}>Сгенерировать с ИИ</Button>}
-          >
-          <Placeholder id="showDescr"
-            description={missName}
-            header={missAbout}
-          >
-            
-          </Placeholder>
-          </Modal>
-        </Cell>
-      </Section>
-
-      <Section header="Если такая вредина и хочешь уточнить запрос)">
-             <Section>
-              <SectionHeader>
-                Тематика: {selTheme}
-              </SectionHeader>
-              
-              </Section> 
-      </Section>
+      { selPart == partsRomantic.main ? <MainPage /> : null }
+      { selPart == partsRomantic.filter ? <FilterPage /> : null }
     </List>
 
     <Tabbar>
