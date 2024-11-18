@@ -35,6 +35,7 @@ export function IndexPage() {
   const partsRomantic = {
     main: "mainRomantic",
     filter: "filterRomantic",
+    random: "",
   };
   const [currTab, setCurrTab] = useState(tabs[0].id);
   const [missName, setMissName] = useState("Test");
@@ -269,8 +270,11 @@ export function IndexPage() {
     romanticCards.length = 0;
     const getSubTheme = genMissions[selTheme];
     console.log(getSubTheme);
-    for (let i = 0; i < 3; i++) {
-      const randomItem = pickRandomMission(getSubTheme);
+    for (let i = 0; i < 2; i++) {
+      let randomItem = pickRandomMission(getSubTheme);
+      while (tmpName === randomItem.missName) {
+        randomItem = pickRandomMission(getSubTheme);
+      }
       tmpName = randomItem.missName;
       tmpAbout = randomItem.missAbout;
       romanticCards.push({
@@ -283,12 +287,36 @@ export function IndexPage() {
     return;
   };
 
-  const switchToPage = () => {setSelPart(partsRomantic.filter)};
+  const generateRandMission = () => {
+    romanticCards.length = 0;
+    for (let i = 0; i < 2; i++) {
+      const randIndx = genCriteries.length * Math.random() << 0;
+      const tmpTheme = genCriteries[randIndx];
+      const getSubTheme = genMissions[tmpTheme];
+      let randomItem = pickRandomMission(getSubTheme);
+      while (tmpName === randomItem.missName) {
+        randomItem = pickRandomMission(getSubTheme);
+      }
+      tmpName = randomItem.missName;
+      tmpAbout = randomItem.missAbout;
+      romanticCards.push({
+        hName: tmpName,
+        hAbout: tmpAbout,
+      });
+    }
+    setRomCards(romanticCards);
+    return;
+  }
+
+  const switchToPage = (xVal) => {setSelPart(xVal)};
 
   const MainPage = () => (
     <Section>
           <Placeholder>
-            <Button size="m" onClick={switchToPage}>Свидание по предпочтениям</Button>
+            <Button size="m" onClick={() => {switchToPage(partsRomantic.filter)}}>Свидание по предпочтениям</Button>
+          </Placeholder>
+          <Placeholder>
+            <Button size="m" onClick={() => {switchToPage(partsRomantic.random)}}>Случайное свидание</Button>
           </Placeholder>
         </Section>
   )
@@ -327,6 +355,32 @@ export function IndexPage() {
     </Section>
   )
 
+  const RandomPage = () => (
+    <Section header="Случайное свидание" id="randomRomantic">
+      <List>
+        <Placeholder>
+          <Button size="m" onClick={generateRandMission}>Мне повезёт!</Button>
+        </Placeholder>
+
+        <Section>
+            {romCards.map(({
+              hName,
+              hAbout,
+            }) => 
+              <Section>
+                <Textarea header={hName} disabled>{hAbout}</Textarea>
+              </Section>
+            )}
+        </Section>
+
+        <Placeholder>
+          <Button size="m">Будущая кнопка "Поделиться"</Button>
+        </Placeholder>
+
+      </List>
+    </Section>
+  )
+
   return ( <div style={{
     height: 200,
     width: 400,
@@ -334,6 +388,7 @@ export function IndexPage() {
     <List>
       { selPart == partsRomantic.main ? <MainPage /> : null }
       { selPart == partsRomantic.filter ? <FilterPage /> : null }
+      { selPart == partsRomantic.random ? <RandomPage /> : null }
     </List>
 
     <Tabbar>
