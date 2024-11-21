@@ -45,35 +45,11 @@ export function IndexPage() {
             </Link>
           </Placeholder>
           <Placeholder>
-            <Button size="m">Случайное свидание</Button>
+            <Link to="/random-romantic">
+              <Button size="m">Случайное свидание</Button>
+            </Link>
           </Placeholder>
         </Section>
-  )
-
-  const RandomPage = () => (
-    <Section header="Случайное свидание" id="randomRomantic">
-      <List>
-        <Placeholder>
-          <Button size="m" onClick={generateRandMission}>Мне повезёт!</Button>
-        </Placeholder>
-
-        <Section>
-            {romCards.map(({
-              hName,
-              hAbout,
-            }) => 
-              <Section>
-                <Textarea header={hName} disabled>{hAbout}</Textarea>
-              </Section>
-            )}
-        </Section>
-
-        <Placeholder>
-          <Button size="m">Будущая кнопка "Поделиться"</Button>
-        </Placeholder>
-
-      </List>
-    </Section>
   )
 
   return ( <div style={{

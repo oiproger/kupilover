@@ -224,6 +224,7 @@ export function DatesBase({ hTheme }) {
     const getSubTheme = genMissions[xTheme];
     let randomItem = pickRandomMission(getSubTheme);
     while (tmpName === randomItem.missName) {
+      console.log(tmpName, randomItem.missName);
       randomItem = pickRandomMission(getSubTheme);
     }
     tmpName = randomItem.missName;
