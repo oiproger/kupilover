@@ -2,6 +2,8 @@ import { IndexPage } from '@/pages/IndexPage/IndexPage';
 import { InitDataPage } from '@/pages/InitDataPage/InitDataPage';
 import { LaunchParamsPage } from '@/pages/LaunchParamsPage/LaunchParamsPage.jsx';
 import { ThemeParamsPage } from '@/pages/ThemeParamsPage/ThemeParamsPage.jsx';
+import { GetFilterRomantic } from '@/pages/GetFilterRomantic/GetFilterRomantic.jsx';
+import { GetRandomRomantic } from '@/pages/GetRandomRomantic/GetRandomRomantic.jsx';
 import { TONConnectPage } from '@/pages/TONConnectPage/TONConnectPage';
 
 /**
@@ -20,6 +22,8 @@ export const routes = [
   { path: '/init-data', Component: InitDataPage, title: 'Init Data' },
   { path: '/theme-params', Component: ThemeParamsPage, title: 'Theme Params' },
   { path: '/launch-params', Component: LaunchParamsPage, title: 'Launch Params' },
+  { path: '/filter-romantic', Component: GetFilterRomantic, title: 'Filter romantic' },
+  { path: '/random-romantic', Component: GetRandomRomantic, title: 'Random romantic' },
   {
     path: '/ton-connect',
     Component: TONConnectPage,
