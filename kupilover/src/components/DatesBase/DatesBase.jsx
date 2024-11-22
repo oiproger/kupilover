@@ -376,14 +376,23 @@ export function DatesBase({ hTheme }) {
           </div>
 
           <Section>
+          <Placeholder>
             <Image
-              size={512}
+              size={256}
               src={tmpImage}
             />
+            </Placeholder>
           </Section>
           
           <Section>
-            <Textarea>{tmpFullAbout}</Textarea>
+            <Placeholder>
+              <Textarea>{tmpFullAbout}</Textarea>
+            </Placeholder>
+            
+          </Section>
+
+          <Section>
+          <Placeholder>
             <Modal
               header={<ModalHeader>Only iOS header</ModalHeader>}
               trigger={<Button size="m">Шаги</Button>}
@@ -403,6 +412,7 @@ export function DatesBase({ hTheme }) {
                 />
               </Placeholder>
             </Modal>
+            </Placeholder>
           </Section>
         </List>
       </Placeholder>
