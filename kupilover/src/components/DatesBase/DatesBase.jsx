@@ -21,6 +21,7 @@ export function DatesBase({ hTheme }) {
   let tmpAbout = "";
   let tmpImage = null;
   let tmpFullAbout = null;
+  let tmpSteps = null;
 
   const [segmIndx, setSegmIndx] = useState(1);
   const tTheme = hTheme;
@@ -52,12 +53,27 @@ export function DatesBase({ hTheme }) {
 
 Победитель в этой игре всегда остается один – тот игрок, который остался при деньгах последним, когда остальные участники разорились и обанкротились.`,
             ],
+            genArrTmpSteps = [
+              `1) Купить (например на одном из маркетплейсов) или взять на вечер у знакомых 
+2) изучить правила игры и объяснить их второй половинке 
+3) на счет  uno, dos, tres приступить к игре`,
+              "",
+              `1) Купить (например на одном из маркетплейсов) или взять на вечер у знакомых. 
+Так же можно рассмотреть вариант игры на компьютере или телефоне 
+
+2) изучить правила игры и объяснить их второй половинке. 
+
+3) Важно! Выбрать фигурку/фишку, которой вы будете играть. У каждого она индивидуальная 
+
+4) Бросайте кубики и игра началась`,
+            ],
           ) => {
             const newIndx = Math.floor(Math.random() * genArr.length);
             const newItm = genArr[newIndx];
             const newImg = genArrImgs[newIndx];
             const newFullAbout = genArrFullAbout[newIndx];
-            return [`Поиграйте в ${newItm}`, newImg, newFullAbout];
+            const newArrSteps = genArrTmpSteps[newIndx];
+            return [`Поиграйте в ${newItm}`, newImg, newFullAbout, newArrSteps];
           },
         },
         mission2: {
@@ -76,12 +92,23 @@ export function DatesBase({ hTheme }) {
 В классические шахматы играют две стороны: черные и белые. Цель игры — поставить мат, то есть захватить вражеского короля.`,
               "",
             ],
+            genArrTmpSteps = [
+              "",
+              `1) Купить (например на одном из маркетплейсов) или взять на вечер у знакомых. 
+Так же можно рассмотреть вариант игры на компьютере или телефоне 
+
+2) изучить правила игры и объяснить их второй половинке. 
+
+3) запастись терпением, приступить к совместной партии`,
+              "",
+            ],
           ) => {
             const newIndx = Math.floor(Math.random() * genArr.length);
             const newItm = genArr[newIndx];
             const newImg = genArrImgs[newIndx];
             const newFullAbout = genArrFullAbout[newIndx];
-            return [`Поиграйте в ${newItm}`, newImg, newFullAbout];
+            const newArrSteps = genArrTmpSteps[newIndx];
+            return [`Поиграйте в ${newItm}`, newImg, newFullAbout, newArrSteps];
           },
         },
         mission3: {
@@ -94,6 +121,10 @@ export function DatesBase({ hTheme }) {
 Далее все просто, закупаемся едой в доставке или начинаем готовить любимые вкусности под просмотр.  
 
 Можете предупредить близких, чтобы не теряли вас `,
+          missSteps: `1) Выбрать сериал 
+2) Закупиться едой или приготовить её
+3) Подготовить ваше рабочее.. место для просмотра к уютному вечеру 
+4) Убрать в сторону телефоны и нажать кнопку «плэй»`,
         },
         mission4: {
           missName: "Магия вне Хогвартса",
@@ -297,6 +328,7 @@ export function DatesBase({ hTheme }) {
       tmpAbout = getNewItm[0];
       tmpImage = getNewItm[1];
       tmpFullAbout = getNewItm[2];
+      tmpSteps = getNewItm[3];
     } else {
       tmpAbout = randomItem.missAbout;
       if (randomItem.missImg !== null) {
@@ -304,6 +336,9 @@ export function DatesBase({ hTheme }) {
       }
       if (randomItem.missFullAbout !== null) {
         tmpFullAbout = randomItem.missFullAbout;
+      }
+      if (randomItem.missSteps !== null) {
+        tmpSteps = randomItem.missSteps;
       }
     }
     
@@ -349,7 +384,25 @@ export function DatesBase({ hTheme }) {
           
           <Section>
             <Textarea>{tmpFullAbout}</Textarea>
-            <Button size="s">Как сделать?</Button>
+            <Modal
+              header={<ModalHeader>Only iOS header</ModalHeader>}
+              trigger={<Button size="m">Шаги</Button>}
+            >
+              <Placeholder
+                description={tmpSteps}
+                header="Шаги"
+              >
+                <img
+                  alt="Telegram sticker"
+                  src="https://xelene.me/telegram.gif"
+                  style={{
+                    display: 'block',
+                    height: '144px',
+                    width: '144px'
+                  }}
+                />
+              </Placeholder>
+            </Modal>
           </Section>
         </List>
       </Placeholder>
