@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { List, Placeholder, Section, Select, Button} from '@telegram-apps/telegram-ui';
+import { List, Placeholder, Section, Button} from '@telegram-apps/telegram-ui';
 import { DatesBase } from '@/components/DatesBase/DatesBase.jsx';
 
 /**
@@ -33,7 +33,7 @@ export function GetRandomRomantic() {
         <List>
 
           <Placeholder>
-            <Button size="m" onClick={generateRandMission}>Мне повезёт!</Button>
+            <Button size="m" onClick={generateRandMission}>Подобрать!</Button>
           </Placeholder>
 
           <Section>
@@ -43,10 +43,6 @@ export function GetRandomRomantic() {
                 <DatesBase hTheme={itm} />
               )}
           </Section>
-
-          <Placeholder>
-            <Button size="m">Будущая кнопка "Поделиться"</Button>
-          </Placeholder>
 
         </List>
       </Section>

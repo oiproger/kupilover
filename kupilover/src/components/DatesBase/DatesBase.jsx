@@ -1,4 +1,17 @@
-import { Section, Textarea } from '@telegram-apps/telegram-ui';
+import { Section, Textarea, Cell, Modal, Button, Placeholder, List, Chip, Image, Avatar, IconButton, SegmentedControl } from '@telegram-apps/telegram-ui';
+import React, { useState } from 'react';
+import { MdFavoriteBorder } from "react-icons/md";
+import { BsShare } from "react-icons/bs";
+import { IoIosInformationCircleOutline } from "react-icons/io";
+
+import chessImg from "./chess.jpg";
+import unoImg from "./uno.png";
+import monopolyImg from "./monopoly.jpg";
+import kinopoiskImg from "./kinopoisk.jpg";
+
+import { ModalHeader } from '@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader';
+import { ModalClose } from '@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose';
+import { SegmentedControlItem } from '@telegram-apps/telegram-ui/dist/components/Navigation/SegmentedControl/components/SegmentedControlItem/SegmentedControlItem';
 
 /**
  * @return {JSX.Element}
@@ -6,7 +19,10 @@ import { Section, Textarea } from '@telegram-apps/telegram-ui';
 export function DatesBase({ hTheme }) {
   let tmpName = "";
   let tmpAbout = "";
+  let tmpImage = null;
+  let tmpFullAbout = null;
 
+  const [segmIndx, setSegmIndx] = useState(1);
   const tTheme = hTheme;
   const genCriteries = [
     "Выберите",
@@ -18,18 +34,66 @@ export function DatesBase({ hTheme }) {
   ];
 
   const genMissions = {
-    [genCriteries[0]]: {
+    [genCriteries[1]]: {
         mission1: {
           missName: "Игра!",
-          missAbout: `Поиграйте в ${["UNO", "свинтус", "монополию"].at(Math.floor(Math.random() * 3))}`,
+          missAbout: (
+            genArr = ["UNO", "свинтус", "монополию"],
+            genArrImgs = [
+              unoImg,
+              null,
+              monopolyImg,
+            ],
+            genArrFullAbout = [
+              "Настольная игра «Уно» — классическая игра, в которой нужно использовать карты действий против своих соперников по игре. Цель игры состоит в том, чтобы первым избавиться от всех своих карт в каждом раунде и набрать очки за карты, которые остались на руках у других игроков. ",
+              "",
+              `Вы берете на себя роль финансиста, путешествующего по улицам, городам или странам (в зависимости от версии игры) в поисках выгодного вложения денег
+Цель каждого игрока — стать «номером 1» по количеству денег в игре.
+
+Победитель в этой игре всегда остается один – тот игрок, который остался при деньгах последним, когда остальные участники разорились и обанкротились.`,
+            ],
+          ) => {
+            const newIndx = Math.floor(Math.random() * genArr.length);
+            const newItm = genArr[newIndx];
+            const newImg = genArrImgs[newIndx];
+            const newFullAbout = genArrFullAbout[newIndx];
+            return [`Поиграйте в ${newItm}`, newImg, newFullAbout];
+          },
         },
         mission2: {
           missName: "Настолки!",
-          missAbout: `Поиграйте в ${["шашки", "шахматы", "нарды"].at(Math.floor(Math.random() * 3))}`,
+          missAbout: (
+            genArr = ["шашки", "шахматы", "нарды"], 
+            genArrImgs = [
+              null,
+              chessImg,
+              null,
+            ],
+            genArrFullAbout = [
+              "",
+              `Шахматы — древнейшая игра и издавна она сравнивалась с военным сражением. По одной из легенд даже изобретение шахмат связывают с заказом одного правителя-полководца, который хотел получить игру, так сказать, симулятор реальной битвы двух армий.
+
+В классические шахматы играют две стороны: черные и белые. Цель игры — поставить мат, то есть захватить вражеского короля.`,
+              "",
+            ],
+          ) => {
+            const newIndx = Math.floor(Math.random() * genArr.length);
+            const newItm = genArr[newIndx];
+            const newImg = genArrImgs[newIndx];
+            const newFullAbout = genArrFullAbout[newIndx];
+            return [`Поиграйте в ${newItm}`, newImg, newFullAbout];
+          },
         },
         mission3: {
           missName: "Сериал",
           missAbout: `Выберите сериал на Кинопоиске, приготовьте вкусное и завернитесь в пледик`,
+          missImg: kinopoiskImg,
+          missFullAbout: `Самое сложное в «Вечер сериалов» это выбрать то, что вы оба хотите посмотреть. 
+Один хороший лайфхак — написать на маленьких бумажках 4-6 сериалов, которые вы хотели бы посмотреть. Смять их, бросить в шапку и кто-то один вытаскивает сериал на вечер. 
+
+Далее все просто, закупаемся едой в доставке или начинаем готовить любимые вкусности под просмотр.  
+
+Можете предупредить близких, чтобы не теряли вас `,
         },
         mission4: {
           missName: "Магия вне Хогвартса",
@@ -57,7 +121,7 @@ export function DatesBase({ hTheme }) {
           missAbout: "Создайте канал и напишите в нём, какие подарки вы хотели бы получить",
         },
     },
-    [genCriteries[1]]: {
+    [genCriteries[2]]: {
       mission1: {
         missName: "Смех смехом",
         missAbout: "Сходите на стендап",
@@ -95,7 +159,7 @@ export function DatesBase({ hTheme }) {
         missAbout: "Устройте фотосессию в красивых местах города",
       },
     },
-    [genCriteries[2]]: {
+    [genCriteries[3]]: {
       mission2: {
         missName: "День в музее",
         missAbout: "Сходите в музей",
@@ -133,7 +197,7 @@ export function DatesBase({ hTheme }) {
         missAbout: "Устройте вечер квизов (перейдите на сайт Кинопоиск - раздел игры)",
       },
     },
-    [genCriteries[3]]: {
+    [genCriteries[4]]: {
       mission1: {
         missName: "От края до края",
         missAbout: "Купите экскурсию по местным достопримечательностям вашего края",
@@ -175,7 +239,7 @@ export function DatesBase({ hTheme }) {
         missAbout: "Прокатитесь на лодке/катере/яхте/сапе/снегоходе",
       },
     },
-    [genCriteries[4]]: {
+    [genCriteries[5]]: {
       mission1: {
         missName: "Мафиози в большом городе",
         missAbout: "Посетите мафию-клуб",
@@ -228,16 +292,79 @@ export function DatesBase({ hTheme }) {
       randomItem = pickRandomMission(getSubTheme);
     }
     tmpName = randomItem.missName;
-    tmpAbout = randomItem.missAbout;
-    console.log(tmpName, tmpAbout);
+    if (typeof(randomItem.missAbout) == 'function') {
+      const getNewItm = randomItem.missAbout();
+      tmpAbout = getNewItm[0];
+      tmpImage = getNewItm[1];
+      tmpFullAbout = getNewItm[2];
+    } else {
+      tmpAbout = randomItem.missAbout;
+      if (randomItem.missImg !== null) {
+        tmpImage = randomItem.missImg;
+      }
+      if (randomItem.missFullAbout !== null) {
+        tmpFullAbout = randomItem.missFullAbout;
+      }
+    }
+    
+    console.log(tmpName, tmpAbout, tmpImage);
   }
 
   const onceGen = genNewCard(tTheme);
 
+  const DateModal = () => (
+    <Modal
+      header={<ModalHeader>Only iOS header</ModalHeader>}
+      trigger={<IconButton size="s"><IoIosInformationCircleOutline /></IconButton>}
+    >
+      <Placeholder
+        description={tmpName}
+        header={tmpAbout}
+      >
+        <List>
+          <div style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            flexDirection: "row",
+          }}>
+            <IconButton mode="plain" size="l" style={{
+              marginLeft: "5ch",
+            }}
+            >
+              <MdFavoriteBorder />
+            </IconButton>
+            <IconButton mode="plain" size="l" style={{
+              marginLeft: "5ch",
+            }}>
+              <BsShare />
+            </IconButton>
+          </div>
+
+          <Section>
+            <Image
+              size={512}
+              src={tmpImage}
+            />
+          </Section>
+          
+          <Section>
+            <Textarea>{tmpFullAbout}</Textarea>
+            <Button size="s">Как сделать?</Button>
+          </Section>
+        </List>
+      </Placeholder>
+    </Modal>
+  )
+
   return (
-    (
     <Section>
-      <Textarea header={tmpName} disabled>{tmpAbout}</Textarea>
-    </Section>)
+      <Cell
+        before={
+          <DateModal />
+        }
+        subtitle={tmpAbout}>
+        {tmpName}
+      </Cell>
+    </Section>
   )
 }

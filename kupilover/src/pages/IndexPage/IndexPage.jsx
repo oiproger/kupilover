@@ -16,6 +16,7 @@ import { CardCell } from '@telegram-apps/telegram-ui/dist/components/Blocks/Card
  * @returns {JSX.Element}
  */
 export function IndexPage() {
+
   const generateRandMission = () => {
     romanticCards.length = 0;
     for (let i = 0; i < 2; i++) {
@@ -52,10 +53,7 @@ export function IndexPage() {
         </Section>
   )
 
-  return ( <div style={{
-    height: 200,
-    width: 400,
-  }}>
+  return ( <div>
     <List>
       { <MainPage />}
     </List>

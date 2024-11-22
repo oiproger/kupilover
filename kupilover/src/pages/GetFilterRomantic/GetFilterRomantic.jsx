@@ -42,7 +42,7 @@ export function GetFilterRomantic() {
           </Placeholder>
 
           <Placeholder>
-            <Button size="m" onClick={generateMission}>Мне повезёт!</Button>
+            <Button size="m" onClick={generateMission}>Подобрать!</Button>
           </Placeholder>
 
           <Section>
@@ -52,10 +52,6 @@ export function GetFilterRomantic() {
                 <DatesBase hTheme={itm} />
               )}
           </Section>
-
-          <Placeholder>
-            <Button size="m">Будущая кнопка "Поделиться"</Button>
-          </Placeholder>
 
         </List>
       </Section>
