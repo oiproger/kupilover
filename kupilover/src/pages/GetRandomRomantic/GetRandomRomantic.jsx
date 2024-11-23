@@ -8,8 +8,9 @@ import { DatesBase } from '@/components/DatesBase/DatesBase.jsx';
 export function GetRandomRomantic() {
   const romanticCards = [
   ];
-  const [romCards, setRomCards] = useState(romanticCards);
+  const [romCards, setRomCards] = useState([]);
   const genCriteries = [
+    "Выберите",
     "Домашний",
     "Прогулочный",
     "Познавательный",
@@ -20,11 +21,12 @@ export function GetRandomRomantic() {
   const generateRandMission = () => {
     romanticCards.length = 0;
     for (let i = 0; i < 2; i++) {
-      const tmpTheme = genCriteries[Math.random() * genCriteries.length << 0];
+      const hGenIndx = Math.floor(Math.random() * (genCriteries.length - 1) + 1);
+      const tmpTheme = genCriteries[hGenIndx];
+      console.log(hGenIndx);
       romanticCards.push(tmpTheme);
     }
     setRomCards(romanticCards);
-    return;
   };
 
   return (

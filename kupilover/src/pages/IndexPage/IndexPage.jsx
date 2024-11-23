@@ -16,28 +16,6 @@ import { CardCell } from '@telegram-apps/telegram-ui/dist/components/Blocks/Card
  * @returns {JSX.Element}
  */
 export function IndexPage() {
-
-  const generateRandMission = () => {
-    romanticCards.length = 0;
-    for (let i = 0; i < 2; i++) {
-      const randIndx = genCriteries.length * Math.random() << 0;
-      const tmpTheme = genCriteries[randIndx];
-      const getSubTheme = genMissions[tmpTheme];
-      let randomItem = pickRandomMission(getSubTheme);
-      while (tmpName === randomItem.missName) {
-        randomItem = pickRandomMission(getSubTheme);
-      }
-      tmpName = randomItem.missName;
-      tmpAbout = randomItem.missAbout;
-      romanticCards.push({
-        hName: tmpName,
-        hAbout: tmpAbout,
-      });
-    }
-    setRomCards(romanticCards);
-    return;
-  }
-
   const MainPage = () => (
     <Section>
           <Placeholder>

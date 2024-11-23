@@ -1,4 +1,4 @@
-import { Section, Textarea, Cell, Modal, Button, Placeholder, List, Chip, Image, Avatar, IconButton, SegmentedControl } from '@telegram-apps/telegram-ui';
+import { Section, Textarea, Cell, Modal, Button, Placeholder, List, Chip, Image, Avatar, IconButton, SegmentedControl, Text, Timeline } from '@telegram-apps/telegram-ui';
 import React, { useState } from 'react';
 import { MdFavoriteBorder } from "react-icons/md";
 import { BsShare } from "react-icons/bs";
@@ -12,6 +12,7 @@ import kinopoiskImg from "./kinopoisk.jpg";
 import { ModalHeader } from '@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader';
 import { ModalClose } from '@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose';
 import { SegmentedControlItem } from '@telegram-apps/telegram-ui/dist/components/Navigation/SegmentedControl/components/SegmentedControlItem/SegmentedControlItem';
+import { TimelineItem } from '@telegram-apps/telegram-ui/dist/components/Blocks/Timeline/components/TimelineItem/TimelineItem';
 
 /**
  * @return {JSX.Element}
@@ -34,6 +35,8 @@ export function DatesBase({ hTheme }) {
     "Знакомство в компании",
   ];
 
+  const testSteps = ["lala", "haha", "ahahahah"];
+
   const genMissions = {
     [genCriteries[1]]: {
         mission1: {
@@ -54,18 +57,18 @@ export function DatesBase({ hTheme }) {
 Победитель в этой игре всегда остается один – тот игрок, который остался при деньгах последним, когда остальные участники разорились и обанкротились.`,
             ],
             genArrTmpSteps = [
-              `1) Купить (например на одном из маркетплейсов) или взять на вечер у знакомых 
-2) изучить правила игры и объяснить их второй половинке 
-3) на счет  uno, dos, tres приступить к игре`,
-              "",
-              `1) Купить (например на одном из маркетплейсов) или взять на вечер у знакомых. 
-Так же можно рассмотреть вариант игры на компьютере или телефоне 
-
-2) изучить правила игры и объяснить их второй половинке. 
-
-3) Важно! Выбрать фигурку/фишку, которой вы будете играть. У каждого она индивидуальная 
-
-4) Бросайте кубики и игра началась`,
+              [
+                `Купить (например на одном из маркетплейсов) или взять на вечер у знакомых`, 
+                `Изучить правила игры и объяснить их второй половинке`,
+                `На счёт  uno, dos, tres приступить к игре`
+              ],
+              [],
+              [
+                `Купить (например на одном из маркетплейсов) или взять на вечер у знакомых. Так же можно рассмотреть вариант игры на компьютере или телефоне`, 
+                `Изучить правила игры и объяснить их второй половинке.`,
+                `Важно! Выбрать фигурку/фишку, которой вы будете играть. У каждого она индивидуальная`,
+                `Бросайте кубики и игра началась`
+              ],
             ],
           ) => {
             const newIndx = Math.floor(Math.random() * genArr.length);
@@ -88,19 +91,15 @@ export function DatesBase({ hTheme }) {
             genArrFullAbout = [
               "",
               `Шахматы — древнейшая игра и издавна она сравнивалась с военным сражением. По одной из легенд даже изобретение шахмат связывают с заказом одного правителя-полководца, который хотел получить игру, так сказать, симулятор реальной битвы двух армий.
-
-В классические шахматы играют две стороны: черные и белые. Цель игры — поставить мат, то есть захватить вражеского короля.`,
+              В классические шахматы играют две стороны: черные и белые. Цель игры — поставить мат, то есть захватить вражеского короля.`,
               "",
             ],
             genArrTmpSteps = [
-              "",
-              `1) Купить (например на одном из маркетплейсов) или взять на вечер у знакомых. 
-Так же можно рассмотреть вариант игры на компьютере или телефоне 
-
-2) изучить правила игры и объяснить их второй половинке. 
-
-3) запастись терпением, приступить к совместной партии`,
-              "",
+              [],
+              [`Купить (например на одном из маркетплейсов) или взять на вечер у знакомых. Также можно рассмотреть вариант игры на компьютере или телефоне`,
+              `Изучить правила игры и объяснить их второй половинке.`,
+              `Запастись терпением, приступить к совместной партии`],
+              [],
             ],
           ) => {
             const newIndx = Math.floor(Math.random() * genArr.length);
@@ -121,10 +120,12 @@ export function DatesBase({ hTheme }) {
 Далее все просто, закупаемся едой в доставке или начинаем готовить любимые вкусности под просмотр.  
 
 Можете предупредить близких, чтобы не теряли вас `,
-          missSteps: `1) Выбрать сериал 
-2) Закупиться едой или приготовить её
-3) Подготовить ваше рабочее.. место для просмотра к уютному вечеру 
-4) Убрать в сторону телефоны и нажать кнопку «плэй»`,
+          missSteps: [
+            `Выбрать сериал`, 
+            `Закупиться едой или приготовить её`,
+            `Подготовить ваше рабочее.. место для просмотра к уютному вечеру`,
+            `Убрать в сторону телефоны и нажать кнопку «плэй»`
+          ],
         },
         mission4: {
           missName: "Магия вне Хогвартса",
@@ -331,15 +332,9 @@ export function DatesBase({ hTheme }) {
       tmpSteps = getNewItm[3];
     } else {
       tmpAbout = randomItem.missAbout;
-      if (randomItem.missImg !== null) {
-        tmpImage = randomItem.missImg;
-      }
-      if (randomItem.missFullAbout !== null) {
-        tmpFullAbout = randomItem.missFullAbout;
-      }
-      if (randomItem.missSteps !== null) {
-        tmpSteps = randomItem.missSteps;
-      }
+      tmpImage = randomItem.missImg ?? null;
+      tmpFullAbout = randomItem.missFullAbout ?? null;
+      tmpSteps = randomItem.missSteps ?? null;
     }
     
     console.log(tmpName, tmpAbout, tmpImage);
@@ -350,7 +345,7 @@ export function DatesBase({ hTheme }) {
   const DateModal = () => (
     <Modal
       header={<ModalHeader>Only iOS header</ModalHeader>}
-      trigger={<IconButton size="s"><IoIosInformationCircleOutline /></IconButton>}
+      trigger={<IconButton size="l"><IoIosInformationCircleOutline /></IconButton>}
     >
       <Placeholder
         description={tmpName}
@@ -380,40 +375,38 @@ export function DatesBase({ hTheme }) {
             <Image
               size={256}
               src={tmpImage}
+              fallbackIcon={<span>😕</span>}
             />
             </Placeholder>
           </Section>
           
-          <Section>
-            <Placeholder>
-              <Textarea>{tmpFullAbout}</Textarea>
-            </Placeholder>
-            
+          { tmpFullAbout !== null ? 
+            <Section
+            header="О занятии"
+          >
+              <Text weight='3'>{tmpFullAbout}</Text>
           </Section>
+          
+          : null }
+          
 
-          <Section>
-          <Placeholder>
-            <Modal
-              header={<ModalHeader>Only iOS header</ModalHeader>}
-              trigger={<Button size="m">Шаги</Button>}
-            >
-              <Placeholder
-                description={tmpSteps}
-                header="Шаги"
+           { tmpSteps !== null ? 
+           
+            <Section
+              header="Шаги"
               >
-                <img
-                  alt="Telegram sticker"
-                  src="https://xelene.me/telegram.gif"
-                  style={{
-                    display: 'block',
-                    height: '144px',
-                    width: '144px'
-                  }}
-                />
-              </Placeholder>
-            </Modal>
-            </Placeholder>
-          </Section>
+
+              <Timeline active={testSteps.length}>
+              {tmpSteps.map((
+                itm, indx
+              ) => 
+                <TimelineItem header={`Шаг ${indx+1}`}>{itm}</TimelineItem>
+              )}
+              </Timeline>
+            </Section> 
+          
+          : null }
+
         </List>
       </Placeholder>
     </Modal>
