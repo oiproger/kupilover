@@ -20,6 +20,9 @@ export function GetFilterRomantic() {
   ];
 
   const generateMission = () => {
+    if (selTheme === genCriteries[0]) {
+      return;
+    }
     romanticCards.length = 0;
     for (let i = 0; i < 2; i++) {
       romanticCards.push(selTheme);
@@ -33,13 +36,11 @@ export function GetFilterRomantic() {
     <List>
       <Section header="Свидание по предпочтениям" id="filterRomantic">
         <List>
-          <Placeholder>
-            <Select header="Тематика" placeholder="Выбирай)" value={selTheme} onChange={e => setSelTheme(e.target.value)}>
-              {genCriteries.map((criteriesName, criteriesVal) => (
-                <option key={criteriesVal}>{criteriesName}</option>
-              ))}
-            </Select>
-          </Placeholder>
+          <Select header="Тематика" placeholder="Выбирай)" value={selTheme} onChange={e => setSelTheme(e.target.value)}>
+            {genCriteries.map((criteriesName, criteriesVal) => (
+              <option key={criteriesVal}>{criteriesName}</option>
+            ))}
+          </Select>
 
           <Placeholder>
             <Button size="m" onClick={generateMission}>Подобрать!</Button>
