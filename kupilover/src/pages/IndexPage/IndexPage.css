@@ -28,3 +28,30 @@
   /* align-items: center; */
   /* height: 100vh; */
 }
+
+.background {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #fff9f9; /* базовый цвет фона */
+}
+
+.emoji {
+  position: absolute;
+  font-size: 2rem;
+  animation: move 30s linear infinite;
+  animation-direction: alternate;
+  opacity: 0.5;
+}
+
+@keyframes move {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(1000%); }
+}
+
+/* Позиционирование emoji для создания потока */
+.emoji:nth-child(1) { top: 20%; animation-delay: 0s; }
+.emoji:nth-child(2) { top: 40%; animation-delay: 2s; }
+.emoji:nth-child(3) { top: 60%; animation-delay: 4s; }
+.emoji:nth-child(4) { top: 80%; animation-delay: 6s; }
