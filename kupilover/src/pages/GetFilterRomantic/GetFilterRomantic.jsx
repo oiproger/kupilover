@@ -33,7 +33,7 @@ export function GetFilterRomantic() {
   };
 
   return (
-    <List>
+    <List className="background">
       <Section header="Свидание по предпочтениям" id="filterRomantic">
         <List>
           <Select header="Тематика" placeholder="Выбирай)" value={selTheme} onChange={e => setSelTheme(e.target.value)}>

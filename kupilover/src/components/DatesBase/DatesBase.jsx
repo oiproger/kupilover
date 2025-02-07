@@ -681,7 +681,7 @@ P.S.
         description={tmpName}
         header={tmpAbout}
       >
-        <List>
+        <List className="background">
           <div style={{
             display: "flex",
             justifyContent: "flex-end",
