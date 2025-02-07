@@ -666,8 +666,8 @@ P.S.
 
   const shareTxt = () => {
     if (shareURL.isAvailable()) {
-      const newTxt = `Смотри, что придумал!\n\n
-      ${tmpName}\n${tmpAbout}\n\nСгенерировано в @kupilover`;
+      const newTxt = `\nСмотри, что придумал!\n\n
+      ${tmpName}\n${tmpAbout}\n\nСгенерировано в @kupilover_bot`;
       shareURL('https://t.me/kupilover', newTxt);
     }
   };
@@ -681,7 +681,7 @@ P.S.
         description={tmpName}
         header={tmpAbout}
       >
-        <List className="background">
+        <List >
           <div style={{
             display: "flex",
             justifyContent: "flex-end",
@@ -714,7 +714,7 @@ P.S.
             <Section
             header="О занятии"
           >
-              <Text weight='3'>{tmpFullAbout}</Text>
+              <Textarea disabled>{tmpFullAbout}</Textarea>
           </Section>
           
           : null }

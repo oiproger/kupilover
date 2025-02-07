@@ -30,7 +30,7 @@ export function GetRandomRomantic() {
   };
 
   return (
-    <List className="background">
+    <List >
       <Section header="Случайное свидание">
         <List>
 
