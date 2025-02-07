@@ -1,5 +1,6 @@
 import WebApp from '@twa-dev/sdk';
 import { AppRoot } from '@telegram-apps/telegram-ui';
+import { init } from '@telegram-apps/sdk';
 import { useEffect } from 'react';
 import {
   Navigate,
@@ -40,6 +41,7 @@ function BackButtonManipulator() {
  * @return {JSX.Element}
  */
 export function App() {
+  init();
   return (
     <AppRoot
       appearance={WebApp.colorScheme}

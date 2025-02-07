@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { MdFavoriteBorder } from "react-icons/md";
 import { BsShare } from "react-icons/bs";
 import { IoIosInformationCircleOutline } from "react-icons/io";
+import { shareURL } from '@telegram-apps/sdk';
 
 // Homes
 import chessImg from "./Homes/chess.jpg";
@@ -663,6 +664,12 @@ P.S.
 
   const onceGen = genNewCard(tTheme);
 
+  const shareTxt = () => {
+    if (shareURL.isAvailable()) {
+      shareURL('https://t.me/heyqbnk', 'Check out this cool group!');
+    }
+  };
+
   const DateModal = () => (
     <Modal
       header={<ModalHeader>Only iOS header</ModalHeader>}
@@ -686,7 +693,7 @@ P.S.
             </IconButton>
             <IconButton mode="plain" size="l" style={{
               marginLeft: "5ch",
-            }}>
+            }} onClick={shareTxt}>
               <BsShare />
             </IconButton>
           </div>
