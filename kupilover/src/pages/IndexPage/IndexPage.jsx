@@ -1,3 +1,4 @@
+import WebApp from '@twa-dev/sdk';
 import { Section, List, Button, Placeholder, Text, Info} from '@telegram-apps/telegram-ui';
 import React from 'react';
 import Particles from 'react-particles';
@@ -12,7 +13,7 @@ import './IndexPage.css';
 export function IndexPage() {
   const MainPage = () => (
     <Section>
-      <div className="background">
+      <div className={(WebApp.colorScheme == "light" ? "background" : "background-d")}>
           <div className="emoji">💌</div>
           <div className="emoji">💜</div>
           <div className="emoji">💛</div>

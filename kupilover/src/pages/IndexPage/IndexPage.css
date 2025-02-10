@@ -37,6 +37,14 @@
   background-color: #fff9f9; /* базовый цвет фона */
 }
 
+.background-d {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #d3cdcd; /* базовый цвет фона */
+}
+
 .emoji {
   position: absolute;
   font-size: 2rem;
