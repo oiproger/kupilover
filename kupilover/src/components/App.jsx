@@ -1,6 +1,6 @@
 import WebApp from '@twa-dev/sdk';
 import { AppRoot } from '@telegram-apps/telegram-ui';
-import { init } from '@telegram-apps/sdk';
+import { init, themeParams } from '@telegram-apps/sdk';
 import { useEffect } from 'react';
 import {
   Navigate,
@@ -42,6 +42,18 @@ function BackButtonManipulator() {
  */
 export function App() {
   init();
+  if (themeParams.mount.isAvailable()) {
+    themeParams.mount();
+    themeParams.isMounted();
+  }
+  if (themeParams.bindCssVars.isAvailable()) {
+    themeParams.bindCssVars();
+    // Creates CSS variables like:
+    // --tg-theme-button-color: #aabbcc
+    // --tg-theme-accent-text-color: #aabbcc
+    // --tg-theme-bg-color: #aabbcc
+    // ...
+  }
   return (
     <AppRoot
       appearance={WebApp.colorScheme}
