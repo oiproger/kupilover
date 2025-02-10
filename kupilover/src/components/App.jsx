@@ -41,7 +41,7 @@ function BackButtonManipulator() {
  * @return {JSX.Element}
  */
 export function App() {
-  init();
+  // init();
   return (
     <AppRoot
       appearance={WebApp.colorScheme}

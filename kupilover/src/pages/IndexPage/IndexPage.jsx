@@ -1,4 +1,4 @@
-import { Section, List, Button, Placeholder, } from '@telegram-apps/telegram-ui';
+import { Section, List, Button, Placeholder, Text, Info} from '@telegram-apps/telegram-ui';
 import React from 'react';
 import Particles from 'react-particles';
 
@@ -13,10 +13,17 @@ export function IndexPage() {
   const MainPage = () => (
     <Section>
       <div className="background">
-          <div className="emoji">❤️</div>
+          <div className="emoji">💌</div>
           <div className="emoji">💜</div>
           <div className="emoji">💛</div>
           <div className="emoji">🩷</div>
+          <div className="emoji">🥰</div>
+          <div className="emoji">🩶</div>
+          <div className="emoji">💙</div>
+          <div className="emoji">💌</div>
+          <div className="emoji">💜</div>
+          <div className="emoji">💛</div>
+          <div className="emoji">🫰</div>
           <div className="emoji">🧡</div>
           <div className="emoji">🩶</div>
           <div className="emoji">💙</div>
@@ -30,6 +37,14 @@ export function IndexPage() {
             <Link to="/random-romantic">
               <Button size="m">Случайное свидание</Button>
             </Link>
+          </Placeholder>
+          <Placeholder>
+            <Info
+              subtitle="Если вам понравилось приложение или хотите оставить отзыв, то напишите в чате приложения /rate"
+              type="text"
+            >
+              Отзыв
+            </Info>
           </Placeholder>
       
         </div>

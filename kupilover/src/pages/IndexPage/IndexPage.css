@@ -40,14 +40,15 @@
 .emoji {
   position: absolute;
   font-size: 2rem;
+  transform: translateX(-100%);
   animation: move 30s linear infinite;
   animation-direction: alternate;
   opacity: 0.5;
 }
 
 @keyframes move {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(1000%); }
+  0% { transform: translateX(-100%);  }
+  100% { transform: translateX(5000%); }
 }
 
 /* Позиционирование emoji для создания потока */
@@ -55,3 +56,13 @@
 .emoji:nth-child(2) { top: 40%; animation-delay: 2s; }
 .emoji:nth-child(3) { top: 60%; animation-delay: 4s; }
 .emoji:nth-child(4) { top: 80%; animation-delay: 6s; }
+.emoji:nth-child(5) { top: 30%; animation-delay: 1s; }
+.emoji:nth-child(6) { top: 50%; animation-delay: 3s; }
+.emoji:nth-child(7) { top: 70%; animation-delay: 5s; }
+.emoji:nth-child(8) { top: 90%; animation-delay: 7s; }
+.emoji:nth-child(9) { top: 10%; animation-delay: 1.5s; }
+.emoji:nth-child(10) { top: 25%; animation-delay: 3.5s; }
+.emoji:nth-child(11) { top: 45%; animation-delay: 5.5s; }
+.emoji:nth-child(12) { top: 55%; animation-delay: 7.5s; }
+.emoji:nth-child(13) { top: 75%; animation-delay: 2.5s; }
+.emoji:nth-child(14) { top: 85%; animation-delay: 4.5s; }

@@ -668,7 +668,7 @@ P.S.
     if (shareURL.isAvailable()) {
       const newTxt = `\nСмотри, что придумал!\n\n
       ${tmpName}\n${tmpAbout}\n\nСгенерировано в @kupilover_bot`;
-      shareURL('https://t.me/kupilover', newTxt);
+      shareURL('https://t.me/kupilover_bot', newTxt);
     }
   };
 
