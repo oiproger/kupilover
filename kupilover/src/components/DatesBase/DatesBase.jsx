@@ -709,6 +709,22 @@ P.S.
             />
             </Placeholder>
           </Section>
+          { tmpSteps !== null ? 
+          
+           <Section
+             header="Шаги"
+             >
+
+             <Timeline active={testSteps.length}>
+             {tmpSteps.map((
+               itm, indx
+             ) => 
+               <TimelineItem header={`Шаг ${indx+1}`}>{itm}</TimelineItem>
+             )}
+             </Timeline>
+           </Section> 
+         
+         : null }
           
           { tmpFullAbout !== null ? 
             <Section
@@ -720,22 +736,6 @@ P.S.
           : null }
           
 
-           { tmpSteps !== null ? 
-           
-            <Section
-              header="Шаги"
-              >
-
-              <Timeline active={testSteps.length}>
-              {tmpSteps.map((
-                itm, indx
-              ) => 
-                <TimelineItem header={`Шаг ${indx+1}`}>{itm}</TimelineItem>
-              )}
-              </Timeline>
-            </Section> 
-          
-          : null }
 
         </List>
       </Placeholder>
