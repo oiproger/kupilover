@@ -42,7 +42,7 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-color: var(--tg-theme-secondary-bg-color, white); /* базовый цвет фона */
+  background-color: var(--tg-theme-bg-color); /* базовый цвет фона */
 }
 
 .emoji {
