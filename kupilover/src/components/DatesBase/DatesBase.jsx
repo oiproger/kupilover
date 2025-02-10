@@ -1,4 +1,3 @@
-import WebApp from '@twa-dev/sdk';
 import { Section, Textarea, Cell, Modal, Button, Placeholder, List, Chip, Image, Avatar, IconButton, SegmentedControl, Text, Timeline } from '@telegram-apps/telegram-ui';
 import React, { useState } from 'react';
 import { MdFavoriteBorder } from "react-icons/md";
@@ -669,8 +668,7 @@ P.S.
     if (shareURL.isAvailable()) {
       const newTxt = `\nСмотри, что придумал!\n\n
       ${tmpName}\n${tmpAbout}\n\nСгенерировано в @kupilover_bot`;
-      WebApp.shareMessage(`https://t.me/kupilover_bot ${newTxt}`);
-      // shareURL('https://t.me/kupilover_bot', newTxt);
+      shareURL('https://t.me/kupilover_bot', newTxt);
     }
   };
 
