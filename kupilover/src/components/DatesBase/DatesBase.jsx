@@ -1,5 +1,5 @@
 import { Section, Textarea, Cell, Modal, Button, Placeholder, List, Chip, Image, Avatar, IconButton, SegmentedControl, Text, Timeline } from '@telegram-apps/telegram-ui';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { MdFavoriteBorder } from "react-icons/md";
 import { BsShare } from "react-icons/bs";
 import { IoIosInformationCircleOutline } from "react-icons/io";
@@ -63,7 +63,9 @@ export function DatesBase({ hTheme }) {
   let tmpImage = null;
   let tmpFullAbout = null;
   let tmpSteps = null;
+  let refId = null;
 
+  const modalRef = useRef(null);
   const [segmIndx, setSegmIndx] = useState(1);
   const tTheme = hTheme;
   const genCriteries = [
@@ -675,7 +677,12 @@ P.S.
   const DateModal = () => (
     <Modal
       header={<ModalHeader>Only iOS header</ModalHeader>}
-      trigger={<IconButton size="l"><IoIosInformationCircleOutline /></IconButton>}
+      trigger={<Button
+        mode="bezeled"
+        size="s"
+      >
+        Подробнее
+      </Button>}
     >
       <Placeholder
         description={tmpName}
@@ -687,12 +694,12 @@ P.S.
             justifyContent: "flex-end",
             flexDirection: "row",
           }}>
-            <IconButton mode="plain" size="l" style={{
+            {/* <IconButton mode="plain" size="l" style={{
               marginLeft: "5ch",
             }}
             >
               <MdFavoriteBorder />
-            </IconButton>
+            </IconButton> */}
             <IconButton mode="plain" size="l" style={{
               marginLeft: "5ch",
             }} onClick={shareTxt}>
@@ -745,8 +752,8 @@ P.S.
   return (
     <Section>
       <Cell
-        before={
-          <DateModal />
+        after={
+          <DateModal ref={modalRef} />
         }
         subtitle={tmpAbout}>
         {tmpName}
