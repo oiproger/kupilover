@@ -1,6 +1,6 @@
 import WebApp from '@twa-dev/sdk';
 import { AppRoot } from '@telegram-apps/telegram-ui';
-import { init, themeParams } from '@telegram-apps/sdk';
+import { init, themeParams, backButton } from '@telegram-apps/sdk';
 import { useEffect } from 'react';
 import {
   Navigate,
@@ -21,16 +21,24 @@ function BackButtonManipulator() {
     function onClick() {
       navigate(-1);
     }
-    WebApp.BackButton.onClick(onClick);
+    backButton.onClick(onClick);
 
-    return () => WebApp.BackButton.offClick(onClick);
+    return () => backButton.offClick(onClick);
   }, [navigate]);
 
   useEffect(() => {
     if (location.pathname === '/') {
-      WebApp.BackButton.isVisible && WebApp.BackButton.hide();
+      if (backButton.mount.isAvailable()) {
+        backButton.hide();
+        backButton.unmount();
+        backButton.isMounted(); // true
+      }
     } else {
-      !WebApp.BackButton.isVisible && WebApp.BackButton.show();
+      if (backButton.mount.isAvailable()) {
+        backButton.mount();
+        backButton.show();
+        backButton.isMounted(); // true
+      }
     }
   }, [location]);
 
@@ -45,6 +53,10 @@ export function App() {
   if (themeParams.mount.isAvailable()) {
     themeParams.mount();
     themeParams.isMounted();
+  }
+  if (backButton.mount.isAvailable()) {
+    backButton.mount();
+    backButton.isMounted(); // true
   }
   if (themeParams.bindCssVars.isAvailable()) {
     themeParams.bindCssVars();
