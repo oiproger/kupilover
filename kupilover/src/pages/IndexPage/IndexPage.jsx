@@ -43,7 +43,7 @@ export function IndexPage() {
               subtitle="Если вам понравилось приложение или хотите оставить отзыв, то напишите в чате приложения /rate"
               type="text"
             >
-              Отзыв
+              Отзыв v1.0
             </Info>
           </Placeholder>
       
