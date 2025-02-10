@@ -1,3 +1,7 @@
+:root {
+  --animation-time: 30s;
+}
+
 .index-page__links {
   list-style: none;
   padding-left: 0;
@@ -49,28 +53,33 @@
   position: absolute;
   font-size: 2rem;
   transform: translateX(-100%);
-  animation: move 30s linear infinite;
+  animation: move var(--animation-time) linear infinite;
   animation-direction: alternate;
   opacity: 0.5;
 }
 
 @keyframes move {
-  0% { transform: translateX(-100%);  }
-  100% { transform: translateX(5000%); }
+  from {
+    translate: 0 0;
+  }
+
+  to {
+    translate: 100vw 0;
+  }
 }
 
 /* Позиционирование emoji для создания потока */
-.emoji:nth-child(1) { top: 20%; animation-delay: 0s; }
-.emoji:nth-child(2) { top: 40%; animation-delay: 2s; }
-.emoji:nth-child(3) { top: 60%; animation-delay: 4s; }
-.emoji:nth-child(4) { top: 80%; animation-delay: 6s; }
-.emoji:nth-child(5) { top: 30%; animation-delay: 1s; }
-.emoji:nth-child(6) { top: 50%; animation-delay: 3s; }
-.emoji:nth-child(7) { top: 70%; animation-delay: 5s; }
-.emoji:nth-child(8) { top: 90%; animation-delay: 7s; }
-.emoji:nth-child(9) { top: 10%; animation-delay: 1.5s; }
-.emoji:nth-child(10) { top: 25%; animation-delay: 3.5s; }
-.emoji:nth-child(11) { top: 45%; animation-delay: 5.5s; }
-.emoji:nth-child(12) { top: 55%; animation-delay: 7.5s; }
-.emoji:nth-child(13) { top: 75%; animation-delay: 2.5s; }
-.emoji:nth-child(14) { top: 85%; animation-delay: 4.5s; }
+.emoji:nth-child(1) { top: 20%; animation-delay: 0s; --animation-time: 29s; }
+.emoji:nth-child(2) { top: 40%; animation-delay: 2s; --animation-time: 27s; }
+.emoji:nth-child(3) { top: 60%; animation-delay: 4s; --animation-time: 30s; }
+.emoji:nth-child(4) { top: 80%; animation-delay: 6s; --animation-time: 31s; }
+.emoji:nth-child(5) { top: 30%; animation-delay: 1s; --animation-time: 26s; }
+.emoji:nth-child(6) { top: 50%; animation-delay: 3s; --animation-time: 33s; }
+.emoji:nth-child(7) { top: 70%; animation-delay: 5s; --animation-time: 27s; }
+.emoji:nth-child(8) { top: 90%; animation-delay: 7s; --animation-time: 32s; }
+.emoji:nth-child(9) { top: 10%; animation-delay: 1.5s; --animation-time: 28s; }
+.emoji:nth-child(10) { top: 25%; animation-delay: 3.5s; --animation-time: 34s; }
+.emoji:nth-child(11) { top: 45%; animation-delay: 5.5s; --animation-time: 27s; }
+.emoji:nth-child(12) { top: 55%; animation-delay: 7.5s; --animation-time: 25s; }
+.emoji:nth-child(13) { top: 75%; animation-delay: 2.5s; --animation-time: 33s; }
+.emoji:nth-child(14) { top: 85%; animation-delay: 4.5s; --animation-time: 30s; }

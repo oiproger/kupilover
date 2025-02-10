@@ -60,11 +60,6 @@ export function App() {
   }
   if (themeParams.bindCssVars.isAvailable()) {
     themeParams.bindCssVars();
-    // Creates CSS variables like:
-    // --tg-theme-button-color: #aabbcc
-    // --tg-theme-accent-text-color: #aabbcc
-    // --tg-theme-bg-color: #aabbcc
-    // ...
   }
   return (
     <AppRoot
