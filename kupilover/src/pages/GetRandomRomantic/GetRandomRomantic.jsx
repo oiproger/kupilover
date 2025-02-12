@@ -20,7 +20,7 @@ export function GetRandomRomantic() {
 
   const generateRandMission = () => {
     romanticCards.length = 0;
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 4; i++) {
       const hGenIndx = Math.floor(Math.random() * (genCriteries.length - 1) + 1);
       const tmpTheme = genCriteries[hGenIndx];
       console.log(hGenIndx);

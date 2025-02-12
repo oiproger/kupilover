@@ -17,30 +17,30 @@ function BackButtonManipulator() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    function onClick() {
-      navigate(-1);
-    }
-    backButton.onClick(onClick);
+  // useEffect(() => {
+  //   function onClick() {
+  //     navigate(-1);
+  //   }
+  //   backButton.onClick(onClick);
 
-    return () => backButton.offClick(onClick);
-  }, [navigate]);
+  //   return () => backButton.offClick(onClick);
+  // }, [navigate]);
 
-  useEffect(() => {
-    if (location.pathname === '/') {
-      if (backButton.mount.isAvailable()) {
-        backButton.hide();
-        backButton.unmount();
-        backButton.isMounted(); // true
-      }
-    } else {
-      if (backButton.mount.isAvailable()) {
-        backButton.mount();
-        backButton.show();
-        backButton.isMounted(); // true
-      }
-    }
-  }, [location]);
+  // useEffect(() => {
+  //   if (location.pathname === '/') {
+  //     if (backButton.mount.isAvailable()) {
+  //       backButton.hide();
+  //       backButton.unmount();
+  //       backButton.isMounted(); // true
+  //     }
+  //   } else {
+  //     if (backButton.mount.isAvailable()) {
+  //       backButton.mount();
+  //       backButton.show();
+  //       backButton.isMounted(); // true
+  //     }
+  //   }
+  // }, [location]);
 
   return null;
 }
@@ -49,18 +49,18 @@ function BackButtonManipulator() {
  * @return {JSX.Element}
  */
 export function App() {
-  init();
-  if (themeParams.mount.isAvailable()) {
-    themeParams.mount();
-    themeParams.isMounted();
-  }
-  if (backButton.mount.isAvailable()) {
-    backButton.mount();
-    backButton.isMounted(); // true
-  }
-  if (themeParams.bindCssVars.isAvailable()) {
-    themeParams.bindCssVars();
-  }
+  // init();
+  // if (themeParams.mount.isAvailable()) {
+  //   themeParams.mount();
+  //   themeParams.isMounted();
+  // }
+  // if (backButton.mount.isAvailable()) {
+  //   backButton.mount();
+  //   backButton.isMounted(); // true
+  // }
+  // if (themeParams.bindCssVars.isAvailable()) {
+  //   themeParams.bindCssVars();
+  // }
   return (
     <AppRoot
       appearance={WebApp.colorScheme}

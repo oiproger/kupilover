@@ -1,4 +1,4 @@
-import { Section, Textarea, Cell, Modal, Button, Placeholder, List, Chip, Image, Avatar, IconButton, SegmentedControl, Text, Timeline } from '@telegram-apps/telegram-ui';
+import { Section, Textarea, Cell, Modal, Button, Placeholder, List, Chip, Image, Avatar, IconButton, SegmentedControl, Text, Timeline, Info, ButtonCell, Title } from '@telegram-apps/telegram-ui';
 import React, { useState, useRef } from 'react';
 import { MdFavoriteBorder } from "react-icons/md";
 import { BsShare } from "react-icons/bs";
@@ -677,16 +677,18 @@ P.S.
   const DateModal = () => (
     <Modal
       header={<ModalHeader>Only iOS header</ModalHeader>}
-      trigger={<Button
-        mode="bezeled"
-        size="s"
+      trigger={<ButtonCell 
+        before={<Image
+          size={40}
+          src={tmpImage}
+          fallbackIcon={<span>😕</span>}
+        />}
+
+        after={<Text weight='2'>{tmpName}</Text>}
       >
-        Подробнее
-      </Button>}
+      </ButtonCell>}
     >
       <Placeholder
-        description={tmpName}
-        header={tmpAbout}
       >
         <List >
           <div style={{
@@ -716,6 +718,22 @@ P.S.
             />
             </Placeholder>
           </Section>
+          {/* <Section> */}
+          <div style={{
+            textAlign: "center"
+          }}>
+            <Text weight='1'>
+              {tmpName}
+            </Text>
+          </div>
+          <div style={{
+            textAlign: "center"
+          }}>
+          <Text weight='3'>
+              {tmpAbout}
+            </Text>
+          </div>
+          {/* </Section> */}
           { tmpSteps !== null ? 
           
            <Section
@@ -737,7 +755,9 @@ P.S.
             <Section
             header="О занятии"
           >
-              <Textarea disabled>{tmpFullAbout}</Textarea>
+              <Placeholder>
+              <Text disabled weight='3'>{tmpFullAbout}</Text>
+              </Placeholder>
           </Section>
           
           : null }
@@ -751,13 +771,13 @@ P.S.
 
   return (
     <Section>
-      <Cell
-        after={
+      {/* <Cell
+        after={ */}
           <DateModal ref={modalRef} />
-        }
+        {/* }
         subtitle={tmpAbout}>
         {tmpName}
-      </Cell>
+      </Cell> */}
     </Section>
   )
 }
