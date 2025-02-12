@@ -1,5 +1,8 @@
 import WebApp from '@twa-dev/sdk';
-import { Section, List, Button, Placeholder, Text, Info} from '@telegram-apps/telegram-ui';
+import { Section, List, Button, Placeholder, Text, Info, Modal, Timeline} from '@telegram-apps/telegram-ui';
+import { ModalHeader } from '@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader';
+import { ModalClose } from '@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose';
+import { TimelineItem } from '@telegram-apps/telegram-ui/dist/components/Blocks/Timeline/components/TimelineItem/TimelineItem';
 import React from 'react';
 import Particles from 'react-particles';
 
@@ -49,6 +52,32 @@ export function IndexPage() {
           </Placeholder>
       
         </div>
+
+        <Modal
+          header={<ModalHeader>Only iOS header</ModalHeader>}
+          open
+          trigger={<Button size="m">Open modal</Button>}
+        >
+          <Placeholder
+            description="Подари любовь, даже не зная как <3"
+            header="Kupilover"
+          >
+            <Timeline active={4}>
+              <TimelineItem header="💛 Выбери">
+                4 случайных идеи или в одной из категорий
+              </TimelineItem>
+              <TimelineItem header="💌 Прочитай">
+                Описание и шаги для воплощения идеи
+              </TimelineItem>
+              <TimelineItem header="🥰 Дари и люби">
+                Исполни и сделай своему партнёру приятное
+              </TimelineItem>
+              <TimelineItem header="🧡 И не только партнёру">
+                Также можешь сгенерировать идею для времяпровождения с друзьями или в компании
+              </TimelineItem>
+            </Timeline>
+          </Placeholder>
+        </Modal>
     </Section>
   )
 
