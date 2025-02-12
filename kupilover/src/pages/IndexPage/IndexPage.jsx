@@ -17,16 +17,16 @@ export function IndexPage() {
           <div className="emoji">💌</div>
           <div className="emoji">💜</div>
           <div className="emoji">💛</div>
-          <div className="emoji">🩷</div>
+          <div className="emoji">💌</div>
           <div className="emoji">🥰</div>
-          <div className="emoji">🩶</div>
+          <div className="emoji">💌</div>
           <div className="emoji">💙</div>
           <div className="emoji">💌</div>
           <div className="emoji">💜</div>
           <div className="emoji">💛</div>
-          <div className="emoji">🫰</div>
+          <div className="emoji">💌</div>
           <div className="emoji">🧡</div>
-          <div className="emoji">🩶</div>
+          <div className="emoji">💌</div>
           <div className="emoji">💙</div>
           
           <Placeholder>
