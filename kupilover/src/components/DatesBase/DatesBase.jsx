@@ -57,7 +57,7 @@ import { TimelineItem } from '@telegram-apps/telegram-ui/dist/components/Blocks/
 /**
  * @return {JSX.Element}
  */
-export function DatesBase({ hTheme }) {
+export function DatesBase({ hTheme, hNumber }) {
   let tmpName = "";
   let tmpAbout = "";
   let tmpImage = null;
@@ -67,7 +67,9 @@ export function DatesBase({ hTheme }) {
 
   const modalRef = useRef(null);
   const [segmIndx, setSegmIndx] = useState(1);
+  const [modalShow, setModalShow] = useState(false);
   const tTheme = hTheme;
+  const hIndx = hNumber;
   const genCriteries = [
     "Выберите",
     "Домашний",
@@ -674,19 +676,22 @@ P.S.
     }
   };
 
-  const DateModal = () => (
-    <Modal
-      header={<ModalHeader>Only iOS header</ModalHeader>}
-      trigger={<ButtonCell 
-        before={<Image
-          size={40}
-          src={tmpImage}
-          fallbackIcon={<span>😕</span>}
-        />}
+  const openMdl = () => {
+    console.log(modalRef.current);
+    const tmpModal = modalRef.props;
+    console.log(tmpModal);
+    // tmpModal.open = true;
+  };
 
-        after={<Text weight='2'>{tmpName}</Text>}
+  const DateModal = () => {
+    return (
+    <Modal
+      id={`dateModal${hIndx}`}
+      header={<ModalHeader>Only iOS header</ModalHeader>}
+      trigger={<Button size="s"
       >
-      </ButtonCell>}
+        Подробнее
+      </Button>}
     >
       <Placeholder
       >
@@ -767,17 +772,24 @@ P.S.
         </List>
       </Placeholder>
     </Modal>
-  )
+  )}
 
   return (
     <Section>
-      {/* <Cell
-        after={ */}
-          <DateModal ref={modalRef} />
-        {/* }
+      <Cell
+        before={
+          <Image
+          size={40}
+          src={tmpImage}
+          fallbackIcon={<span>?</span>}
+        />
+        }
+        after={
+          <DateModal />
+        }
         subtitle={tmpAbout}>
         {tmpName}
-      </Cell> */}
+      </Cell>
     </Section>
   )
 }

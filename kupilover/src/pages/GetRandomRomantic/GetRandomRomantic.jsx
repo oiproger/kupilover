@@ -20,11 +20,11 @@ export function GetRandomRomantic() {
 
   const generateRandMission = () => {
     romanticCards.length = 0;
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 2; i++) {
       const hGenIndx = Math.floor(Math.random() * (genCriteries.length - 1) + 1);
       const tmpTheme = genCriteries[hGenIndx];
       console.log(hGenIndx);
-      romanticCards.push(tmpTheme);
+      romanticCards.push([tmpTheme,i]);
     }
     setRomCards(romanticCards);
   };
@@ -42,7 +42,7 @@ export function GetRandomRomantic() {
               {romCards.map((
                 itm
               ) => 
-                <DatesBase hTheme={itm} />
+                <DatesBase hTheme={itm[0]} hNumber={itm[1]} />
               )}
           </Section>
 

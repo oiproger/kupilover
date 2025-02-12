@@ -25,11 +25,10 @@ export function GetFilterRomantic() {
       return;
     }
     romanticCards.length = 0;
-    for (let i = 0; i < 4; i++) {
-      romanticCards.push(selTheme);
+    for (let i = 0; i < 2; i++) {
+      romanticCards.push([selTheme,i]);
     }
     setRomCards(romanticCards);
-    console.log(romanticCards);
     return;
   };
 
@@ -51,7 +50,7 @@ export function GetFilterRomantic() {
               {romCards.map((
                 itm
               ) => 
-                <DatesBase hTheme={itm} />
+                <DatesBase hTheme={itm[0]} hNumber={itm[1]} />
               )}
           </Section>
 

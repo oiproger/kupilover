@@ -56,7 +56,6 @@ export function IndexPage() {
         <Modal
           header={<ModalHeader>Only iOS header</ModalHeader>}
           open
-          trigger={<Button size="m">Open modal</Button>}
         >
           <Placeholder
             description="Подари любовь, даже не зная как <3"
