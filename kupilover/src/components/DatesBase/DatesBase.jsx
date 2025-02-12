@@ -701,12 +701,6 @@ P.S.
             justifyContent: "flex-end",
             flexDirection: "row",
           }}>
-            {/* <IconButton mode="plain" size="l" style={{
-              marginLeft: "5ch",
-            }}
-            >
-              <MdFavoriteBorder />
-            </IconButton> */}
             <IconButton mode="plain" size="l" style={{
               marginLeft: "5ch",
             }} onClick={shareTxt}>
@@ -723,7 +717,6 @@ P.S.
             />
             </Placeholder>
           </Section>
-          {/* <Section> */}
           <div style={{
             textAlign: "center"
           }}>
@@ -738,7 +731,6 @@ P.S.
               {tmpAbout}
             </Text>
           </div>
-          {/* </Section> */}
           { tmpSteps !== null ? 
           
            <Section
