@@ -14,6 +14,7 @@ import {
 import { routes } from '@/navigation/routes.jsx';
 
 function BackButtonManipulator() {
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -61,6 +62,7 @@ export function App() {
   if (themeParams.bindCssVars.isAvailable()) {
     themeParams.bindCssVars();
   }
+
   return (
     <AppRoot
       appearance={WebApp.colorScheme}

@@ -15,7 +15,6 @@ export function GetRandomRomantic() {
     "Прогулочный",
     "Познавательный",
     "Выездной",
-    "Знакомство в компании",
   ];
 
   const generateRandMission = () => {
@@ -23,7 +22,7 @@ export function GetRandomRomantic() {
     for (let i = 0; i < 2; i++) {
       const hGenIndx = Math.floor(Math.random() * (genCriteries.length - 1) + 1);
       const tmpTheme = genCriteries[hGenIndx];
-      console.log(hGenIndx);
+      // console.log(hGenIndx);
       romanticCards.push([tmpTheme,i]);
     }
     setRomCards(romanticCards);

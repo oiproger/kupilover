@@ -687,7 +687,7 @@ P.S.
     return (
     <Modal
       id={`dateModal${hIndx}`}
-      header={<ModalHeader>Only iOS header</ModalHeader>}
+      header={<ModalHeader></ModalHeader>}
       trigger={<Button size="s"
       >
         Подробнее
@@ -731,6 +731,18 @@ P.S.
               {tmpAbout}
             </Text>
           </div>
+          
+          { tmpFullAbout !== null ? 
+            <Section
+            header="О занятии"
+            >
+              <Placeholder>
+              <Text disabled weight='3'>{tmpFullAbout}</Text>
+              </Placeholder>
+          </Section>
+          
+          : null }
+          
           { tmpSteps !== null ? 
           
            <Section
@@ -747,18 +759,6 @@ P.S.
            </Section> 
          
          : null }
-          
-          { tmpFullAbout !== null ? 
-            <Section
-            header="О занятии"
-          >
-              <Placeholder>
-              <Text disabled weight='3'>{tmpFullAbout}</Text>
-              </Placeholder>
-          </Section>
-          
-          : null }
-          
 
 
         </List>

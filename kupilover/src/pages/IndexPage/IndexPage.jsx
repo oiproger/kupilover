@@ -14,6 +14,7 @@ import './IndexPage.css';
  * @returns {JSX.Element}
  */
 export function IndexPage() {
+  
   const MainPage = () => (
     <Section>
       <div className={(WebApp.colorScheme == "light" ? "background" : "background-d")}>
@@ -42,34 +43,44 @@ export function IndexPage() {
               <Button size="m">Случайное свидание</Button>
             </Link>
           </Placeholder>
-          <Placeholder>
+          {/* <Placeholder>
             <Info
               subtitle="Если вам понравилось приложение или хотите оставить отзыв, то напишите в чате приложения /rate"
               type="text"
             >
               Отзыв v1.0
             </Info>
-          </Placeholder>
+          </Placeholder> */}
       
         </div>
 
         <Modal
-          header={<ModalHeader>Only iOS header</ModalHeader>}
+          header={<ModalHeader 
+          ></ModalHeader>}
           open
         >
           <Placeholder
-            description="Подари любовь, даже не зная как <3"
-            header="Kupilover"
           >
-            <Timeline active={4}>
+            <div style={{
+              textAlign: "center"
+            }}>
+              <Text weight='1'>
+                {`Kupilover`}
+              </Text>
+            </div>
+            <div style={{
+              textAlign: "center"
+            }}>
+            <Text weight='3'>
+                {`Подари любовь, даже не зная как <3`}
+              </Text>
+            </div>
+            <Timeline active={3}>
               <TimelineItem header="💛 Выбери">
                 4 случайных идеи или в одной из категорий
               </TimelineItem>
               <TimelineItem header="💌 Прочитай">
                 Описание и шаги для воплощения идеи
-              </TimelineItem>
-              <TimelineItem header="🥰 Дари и люби">
-                Исполни и сделай своему партнёру приятное
               </TimelineItem>
               <TimelineItem header="🧡 И не только партнёру">
                 Также можешь сгенерировать идею для времяпровождения с друзьями или в компании
